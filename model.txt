@@ -1,0 +1,27 @@
+npx sequelize db:create ye Database Flights created.
+
+
+npx sequelize model:generate --name Airplane --attributes modelNumber:string,capacity:integer
+
+
+
+    npx sequelize db:migrate  es se table create hoti hai 
+    npx sequelize db:migrate:undo  -> for delete table
+    npx sequelize db:migrate:undo:all  -> for delete table
+
+
+    npx sequelize seed:generate --name add-airplanes
+    create seed file and seed file me ham data de skte hai ek 
+    npx sequelize db:seed:all
+    es commond se vo sara data add  kar skte hai
+    es se sari seed file run 
+    and i want to run a sspecific then 
+    npx sequelize db:seed --seed seed_fileName.js
+
+
+    npx sequelize db:seed:undo:all  se remove ho jayege
+
+
+    npx sequelize migration:generate --name update-city-airport-association 
+    ye commond ek file banayegi and us me ham add constraint banyege jo ki forigen key add karege 
+    npx sequelize db:migrate
