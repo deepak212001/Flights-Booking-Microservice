@@ -28,7 +28,7 @@ module.exports = {
         defaultValue: INITIATED,
         allowNull: false,
       },
-      noOfSeats: {
+      noofSeats: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },

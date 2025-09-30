@@ -2,19 +2,24 @@
 // const { PORT } = require("./config");
 
 const express = require("express");
-const { ServerConfig } = require("./config/index.js");
+const { ServerConfig,Queue  } = require("./config/index.js");
 const apiRoutes = require("./routes/index.js");
 const app = express();
 
+const CRON = require('./utils/common/cronJob.js');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use("/api", apiRoutes);
 
-app.listen(ServerConfig.PORT, () => {
+app.listen(ServerConfig.PORT, async() => {
   console.log(`Successfullly Started the server on ${ServerConfig.PORT} `);
-  // logger.info(`Successfullly Started the server on ${ServerConfig.PORT}`, {});
-  //2025-09-21 15:17:56 : info : Successfullly Started the server on 7000
-  // logger.error aur logger.
+  CRON();
+  await Queue.connectQueue();
+  console.log("queue connected")
 });
 
 app.get("/", (req, res) => {
   res.send(`Successfullly Started the server on PORT : ${ServerConfig.PORT}`);
+
 });
